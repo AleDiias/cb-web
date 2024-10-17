@@ -17,14 +17,14 @@ Siga os passos abaixo para configurar e rodar o projeto localmente:
    git clone https://github.com/AleDiias/cb-web.git
 
 2.	Navegue até o diretório do projeto:
-   ```bash
-   cd cb-web
+    ```bash
+    cd cb-web
 
 3.	Instale as dependências utilizando o Yarn:
     ```bash
     yarn -i ou yarn install
 
-### Rodando o projeto
+#### Rodando o projeto
 ```
 yarn serve
 ```
