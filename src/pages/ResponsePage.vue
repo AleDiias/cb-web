@@ -115,13 +115,27 @@
       };
     },
     methods: {
-        loadData() {
-    fetch('http://localhost:3001/utters')
-      .then(response => response.json())
-      .then(data => {
-        this.responses = data; // Atualiza a lista de respostas com os dados do backend
-      });
-  },
+    loadData() {
+      fetch('http://localhost:3001/utters')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (Array.isArray(data)) {
+            this.responses = data;
+          } else {
+            console.error('Dados recebidos não são um array:', data);
+            this.responses = [];
+          }
+        })
+        .catch(error => {
+          console.error('Erro ao carregar os dados:', error);
+          this.responses = [];
+        });
+    },
       addBubble() {
         this.newResponse.bubbles.push({ text: '' });
       },
